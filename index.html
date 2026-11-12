@@ -8,189 +8,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Pro:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #11110f;
-      --panel: #1b1a16;
-      --panel-2: #222019;
-      --gold: #c7a66a;
-      --gold-light: #e0c58e;
-      --text: #e8e0d0;
-      --muted: #aaa18f;
-      --line: rgba(199, 166, 106, .27);
-      --serif: "Crimson Pro", Georgia, serif;
-      --display: "Cinzel", Georgia, serif;
-      --content: 1160px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--serif);
-      font-size: 19px;
-      line-height: 1.55;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container { width: min(var(--content), calc(100% - 48px)); margin: 0 auto; }
-    .eyebrow {
-      color: var(--gold);
-      font: 500 11px/1.5 var(--display);
-      letter-spacing: .24em;
-      text-transform: uppercase;
-    }
-    .section { padding: 92px 0; }
-    .section-heading { margin: 0 0 10px; font: 500 clamp(26px, 4vw, 38px)/1.2 var(--display); letter-spacing: .04em; }
-    .section-intro { color: var(--muted); max-width: 620px; margin: 0 0 34px; }
-    .gold-line { width: 58px; height: 1px; background: var(--gold); margin: 20px 0 24px; }
-
-    /* Navigation */
-    .site-header {
-      position: absolute; z-index: 10; top: 0; left: 0; right: 0;
-      border-bottom: 1px solid rgba(224, 197, 142, .18);
-      background: linear-gradient(180deg, rgba(10,10,9,.76), transparent);
-    }
-    .nav {
-      min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px;
-    }
-    .brand { font: 600 24px/1 var(--display); letter-spacing: .18em; color: var(--gold-light); white-space: nowrap; }
-    .brand small { display: block; margin-top: 7px; color: #c3b79e; font: 9px/1 var(--display); letter-spacing: .22em; }
-    .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.6vw, 34px); }
-    .nav-links a { color: #ddd3c0; font: 500 10px var(--display); letter-spacing: .13em; transition: color .2s; }
-    .nav-links a:hover { color: var(--gold-light); }
-    .menu-toggle { display: none; color: var(--gold-light); background: none; border: 1px solid var(--line); padding: 8px 12px; }
-
-    /* Hero */
-    .hero {
-      min-height: 760px; display: grid; place-items: center; text-align: center; position: relative; overflow: hidden;
-      background:
-        linear-gradient(180deg, rgba(9,10,10,.44) 0%, rgba(12,12,10,.26) 35%, #11110f 100%),
-        linear-gradient(90deg, rgba(9,10,10,.52), rgba(9,10,10,.08), rgba(9,10,10,.52)),
-        url("Images/ten-anh-cua-ban.jpg") center 43%/cover no-repeat;
-    }
-    .hero::after {
-      content: ""; position: absolute; inset: auto 0 0; height: 180px;
-      background: linear-gradient(transparent, var(--bg));
-    }
-    .hero-content { position: relative; z-index: 1; width: min(850px, calc(100% - 40px)); padding-top: 80px; }
-    .hero-kicker { color: #e0c58e; font: 500 11px var(--display); letter-spacing: .34em; }
-    .hero h1 { margin: 18px 0 12px; color: #f0dfb8; font: 500 clamp(48px, 10vw, 94px)/1 var(--display); letter-spacing: .12em; text-shadow: 0 4px 28px #000; }
-    .hero-rule { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 26px auto; color: var(--gold); }
-    .hero-rule::before, .hero-rule::after { content: ""; width: 68px; height: 1px; background: var(--gold); opacity: .75; }
-    .hero-tagline { color: #eee5d5; font-size: clamp(20px, 3vw, 26px); font-style: italic; margin: 0 auto 32px; }
-    .button {
-      display: inline-block; padding: 13px 23px; border: 1px solid var(--gold);
-      color: var(--gold-light); font: 500 10px var(--display); letter-spacing: .16em; text-transform: uppercase;
-      transition: .2s ease;
-    }
-    .button:hover { background: var(--gold); color: #17140e; }
-
-    /* Introduction */
-    .intro { text-align: center; padding-top: 42px; }
-    .intro-copy { max-width: 760px; margin: 0 auto; color: #c6bdad; font-size: 22px; }
-    .intro-copy em { color: var(--gold-light); }
-
-    /* World */
-    .world-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 58px; align-items: center; }
-    .map-art {
-    min-height: 390px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--line);
-
-    background:
-        linear-gradient(rgba(21,18,13,.10), rgba(21,18,13,.10)),
-        url("Images/aethoria-map.png") center/contain no-repeat;
-
-    background-color: #d8c8a8;
-    display: grid;
-    place-items: center;
-    }
-    .map-art::before { content: "MAP OF AETHORIA"; color: rgba(242,220,177,.88); font: 500 clamp(20px,3vw,32px) var(--display); letter-spacing: .16em; text-shadow: 0 2px 15px #000; }
-    .map-art::after { content: "Replace this image with your illustrated world map"; position: absolute; bottom: 16px; color: rgba(255,255,255,.7); font-size: 14px; }
-    .world-copy p { color: var(--muted); }
-    .world-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 22px; margin: 25px 0 30px; }
-    .world-list span { color: #d7c9ae; font-size: 17px; border-bottom: 1px solid var(--line); padding: 8px 0; }
-    .world-toggle { color: var(--gold-light); font-size: 17px; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--gold); padding: 8px 0; cursor: pointer; display: flex; justify-content: space-between; transition: color .2s; }
-    .world-toggle::after { content: "+"; color: var(--gold); }
-    .world-toggle[aria-expanded="true"]::after { content: "−"; }
-    .world-toggle:hover { color: #f0dfb8; }
-
-    /* Factions */
-    .factions-panel { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
-    .factions-panel[hidden] { display: none; }
-    .faction-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .faction-card { padding: 26px 22px; border: 1px solid var(--line); background: linear-gradient(145deg, #27241c, #171612); transition: transform .25s, border-color .25s; }
-    .faction-card:hover { transform: translateY(-4px); border-color: rgba(199,166,106,.55); }
-    .faction-emblem { color: var(--gold); font-size: 30px; }
-    .faction-card h3 { color: #e3d0a9; font: 500 17px var(--display); letter-spacing: .06em; margin: 16px 0 6px; }
-    .faction-card p { color: var(--muted); font-size: 16px; margin: 0; }
-
-    /* Lore */
-    .lore { background: #171612; }
-    .lore-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .lore-item { min-height: 205px; padding: 26px 20px; border: 1px solid var(--line); background: linear-gradient(145deg, #27241c, #171612); display: flex; flex-direction: column; justify-content: end; }
-    .lore-symbol { color: var(--gold); font-size: 28px; margin-bottom: auto; }
-    .lore-item h3 { color: #e3d0a9; font: 500 15px var(--display); letter-spacing: .06em; margin: 20px 0 5px; }
-    .lore-item p { color: var(--muted); font-size: 16px; margin: 0; }
-
-    /* Creator and footer */
-    .creator { text-align: center; }
-    .creator p { max-width: 650px; color: var(--muted); margin: 0 auto 26px; }
-    footer { padding: 34px 0; border-top: 1px solid var(--line); background: #0c0c0a; text-align: center; }
-    footer .brand { font-size: 18px; }
-    footer p { color: #817969; font: 10px var(--display); letter-spacing: .12em; margin: 14px 0 0; }
-
-    @media (max-width: 800px) {
-      .nav { min-height: 72px; }
-      .menu-toggle { display: block; }
-      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 20px 24px; background: #14130f; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; }
-      .nav-links.open { display: flex; }
-      .hero { min-height: 680px; }
-      .world-layout { grid-template-columns: 1fr; gap: 30px; }
-      .lore-grid { grid-template-columns: 1fr 1fr; }
-      .faction-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 540px) {
-      .container { width: min(100% - 32px, var(--content)); }
-      .section { padding: 66px 0; }
-      .hero { min-height: 620px; }
-      .hero h1 { letter-spacing: .07em; }
-      .lore-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .lore-item { min-height: 175px; padding: 18px 14px; }
-      .world-list { grid-template-columns: 1fr; }
-      .faction-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#home">AETHORIA<small>One World, Countless Destinies.</small></a>
-      <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#sonic-legion">Sonic Legion</a>
-        <a href="#dragon-knight">Dragon Knight</a>
+      <a class="brand" href="index.html">AETHORIA<small>One World. Countless Destinies.</small></a>
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-nav" aria-expanded="false">MENU</button>
+      <nav class="nav-links" id="site-nav" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="sonic-legion.html">Sonic Legion</a>
+        <a href="dragon-knight.html">Dragon Knight</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- Hero image: set --hero-image in assets/style.css (IMAGE SLOTS) -->
     <section class="hero" id="home">
       <div class="hero-content">
         <h1>AETHORIA</h1>
         <div class="hero-rule">✧</div>
-        <p class="hero-tagline">Every legend begins somewhere. Every world has a story.</p>
+        <p class="hero-tagline">One World. Countless Destinies.</p>
+        <p class="hero-subline">Every legend begins somewhere. Every world has a story.</p>
+        <a class="button" href="#stories">Begin the journey</a>
       </div>
     </section>
 
     <section class="section intro">
-      <div class="container">
+      <div class="container reveal">
         <div class="eyebrow">Welcome, traveler</div>
-        <div class="gold-line" style="margin-left:auto;margin-right:auto"></div>
+        <div class="gold-line center"></div>
         <p class="intro-copy">
           Beyond the known horizons lies <em>Aethoria</em> — a world shaped by ancient powers,
           forgotten kingdoms, extraordinary lives and stories waiting to be told.
@@ -199,109 +49,44 @@
       </div>
     </section>
 
-    <section class="section" id="world">
-      <div class="container world-layout">
-        <div class="map-art" role="img" aria-label="Placeholder for the illustrated map of Aethoria"></div>
-        <div class="world-copy">
-          <div class="eyebrow">A world waiting to be found</div>
-          <h2 class="section-heading">Explore Aethoria</h2>
-          <div class="gold-line"></div>
-          <p>From forgotten ruins to thriving kingdoms, every place holds a history. Explore the lands, peoples and powers that make this universe.</p>
-          <div class="world-list">
-            <span>Geography</span><span>Kingdoms</span>
-            <span>Civilizations</span><span>Races & Peoples</span>
-            <button class="world-toggle" type="button" aria-expanded="false" aria-controls="factions">Factions</button><span>Magic System</span>
-          </div>
-          <a class="button" href="#">Enter the world</a>
-        </div>
-      </div>
-
-      <div class="container factions-panel" id="factions" hidden>
-        <div class="eyebrow">Powers that shape the realm</div>
-        <h2 class="section-heading">The Factions</h2>
-        <div class="gold-line"></div>
-        <div class="faction-grid">
-          <article class="faction-card" id="sonic-legion">
-            <div class="faction-emblem">♫</div>
-            <h3>Sonic Legion</h3>
-            <p>The Sonic Legion is the elite military force of the Skyrith,
-              a proud and ancient race of winged beings who dwell among the highest peaks of Aethoria.
-              Renowned for their extraordinary speed, aerial mastery, and unwavering discipline,
-              the Legion commands the skies with unmatched precision and devastating force.
-              Its warriors are among the finest of the Skyrith, bound by honor, loyalty, and an unshakable sense of superiority. To behold the Sonic Legion descending from the heavens is to witness the fury of the skies unleashed.
-            </p>
-          </article>
-          <article class="faction-card" id="dragon-knight">
-            <div class="faction-emblem">⚔</div>
-            <h3>Dragon Knight</h3>
-            <p>Born of two worlds, yet accepted by neither, Dragon Knight is a half-blood child of the Skyrith and humankind.
-              For his mixed heritage, his wings were severed in childhood, stripping him of the birthright of his mother's people.
-              His mother was condemned to death, while the identity of his human father remains shrouded in mystery.
-              Left to perish, he was saved by a small band of goblins, who became his unlikely companions.
-              Yet fate had other plans for the outcast. Through courage, wit, and an extraordinary gift, he eventually forged a bond with a dragon - a creature few could ever hope to command.
-              Now, astride his mighty companion, he wanders the vast lands of Aethoria, a lone traveler beneath the endless skies, belonging to no kingdom and bound by no borders.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section lore" id="lore">
+    <section class="section stories" id="stories">
       <div class="container">
-        <div class="eyebrow">Knowledge through the ages</div>
-        <h2 class="section-heading">The Lore of Aethoria</h2>
-        <div class="gold-line"></div>
-        <p class="section-intro">The myths, histories and mysteries that lie beneath the stories.</p>
-        <div class="lore-grid">
-          <article class="lore-item"><div class="lore-symbol">✧</div><h3>Ancient Gods</h3><p>Divinities and powers of old.</p></article>
-          <article class="lore-item"><div class="lore-symbol">⌛</div><h3>Historical Ages</h3><p>The turning points of history.</p></article>
-          <article class="lore-item"><div class="lore-symbol">⚔</div><h3>Forgotten Wars</h3><p>Conflicts that shaped the world.</p></article>
-          <article class="lore-item"><div class="lore-symbol">◇</div><h3>Lost Artifacts</h3><p>Relics of power and mystery.</p></article>
+        <div class="reveal">
+          <div class="eyebrow">Two stories, one world</div>
+          <h2 class="section-heading">The Stories</h2>
+          <div class="gold-line center"></div>
         </div>
-      </div>
-    </section>
-
-    <section class="section creator" id="about">
-      <div class="container">
-        <div class="eyebrow">The mind behind the myth</div>
-        <h2 class="section-heading">The Creator</h2>
-        <div class="gold-line" style="margin-left:auto;margin-right:auto"></div>
-        <p>Aethoria is an independent fantasy universe created to bring stories, music, mythology and imagination together. This space will grow with every tale yet to be told.</p>
-        <a class="button" href="mailto:hello@aethoria.com">Get in touch</a>
+        <div class="story-grid">
+          <a class="story-card reveal" href="sonic-legion.html">
+            <!-- Card image: set --art-image for .story-art--sonic in assets/style.css -->
+            <div class="story-art story-art--sonic"><span class="story-emblem" aria-hidden="true">♫</span></div>
+            <div class="story-body">
+              <div class="eyebrow">The Skyrith</div>
+              <h3>Sonic Legion</h3>
+              <p>The Sonic Legion is the elite military force of the Skyrith,
+                a proud and ancient race of winged beings who dwell among the highest peaks of Aethoria.</p>
+              <span class="story-link">Begin the story</span>
+            </div>
+          </a>
+          <a class="story-card reveal" href="dragon-knight.html">
+            <!-- Card image: set --art-image for .story-art--dragon in assets/style.css -->
+            <div class="story-art story-art--dragon"><span class="story-emblem" aria-hidden="true">⚔</span></div>
+            <div class="story-body">
+              <div class="eyebrow">The Outcast</div>
+              <h3>Dragon Knight</h3>
+              <p>Born of two worlds, yet accepted by neither, Dragon Knight is a half-blood child of the Skyrith and humankind.</p>
+              <span class="story-link">Begin the story</span>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <a class="brand" href="#home">AETHORIA</a>
+    <a class="brand" href="index.html">AETHORIA</a>
     <p>A UNIVERSE OF STORIES YET TO BE TOLD</p>
     <p>© <span id="year"></span> AETHORIA. ALL RIGHTS RESERVED.</p>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", event => {
-        document.querySelector(".nav-links").classList.remove("open");
-        const target = document.querySelector(link.getAttribute("href"));
-        const panel = target.closest(".factions-panel");
-        if (panel.hidden) {
-          event.preventDefault();
-          panel.hidden = false;
-          document.querySelector('.world-toggle[aria-controls="factions"]').setAttribute("aria-expanded", "true");
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    });
-    document.querySelectorAll(".world-toggle").forEach(toggle => {
-      toggle.addEventListener("click", () => {
-        const panel = document.getElementById(toggle.getAttribute("aria-controls"));
-        const open = toggle.getAttribute("aria-expanded") !== "true";
-        toggle.setAttribute("aria-expanded", open);
-        panel.hidden = !open;
-        if (open) panel.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
 </body>
 </html>
