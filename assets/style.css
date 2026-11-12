@@ -20,8 +20,8 @@
 .hero              { --hero-image: none; }   /* Home hero, e.g. url("../Images/hero-home.jpg") */
 .hero--sonic       { --hero-image: none; }   /* Sonic Legion page hero, e.g. url("../Images/sonic-legion-hero.jpg") */
 .hero--dragon      { --hero-image: none; }   /* Dragon Knight page hero, e.g. url("../Images/dragon-knight-hero.jpg") */
-.story-art--sonic  { --art-image: none; }    /* Sonic Legion card, e.g. url("../Images/sonic-legion.jpg") */
-.story-art--dragon { --art-image: none; }    /* Dragon Knight card, e.g. url("../Images/dragon-knight.jpg") */
+.story-art--sonic  { --art-image: url("images/characters/sonic-legion.png"); }    /* Sonic Legion card */
+.story-art--dragon { --art-image: url("images/characters/dragon-knight.png"); }   /* Dragon Knight card */
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
