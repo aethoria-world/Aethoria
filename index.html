@@ -172,11 +172,8 @@
       <a class="brand" href="#home">AETHORIA<small>One World, Countless Destinies.</small></a>
       <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#home">HOME</a>
-        <a href="#world">WORLD</a>
-        <a href="#characters">CHARACTERS</a>
-        <a href="#lore">LORE</a>
-        <a href="#about">ABOUT</a>
+        <a href="#sonic-legion">Sonic Legion</a>
+        <a href="#dragon-knight">Dragon Knight</a>
       </nav>
     </div>
   </header>
@@ -224,7 +221,7 @@
         <h2 class="section-heading">The Factions</h2>
         <div class="gold-line"></div>
         <div class="faction-grid">
-          <article class="faction-card">
+          <article class="faction-card" id="sonic-legion">
             <div class="faction-emblem">♫</div>
             <h3>Sonic Legion</h3>
             <p>The Sonic Legion is the elite military force of the Skyrith,
@@ -234,7 +231,7 @@
               Its warriors are among the finest of the Skyrith, bound by honor, loyalty, and an unshakable sense of superiority. To behold the Sonic Legion descending from the heavens is to witness the fury of the skies unleashed.
             </p>
           </article>
-          <article class="faction-card">
+          <article class="faction-card" id="dragon-knight">
             <div class="faction-emblem">⚔</div>
             <h3>Dragon Knight</h3>
             <p>Born of two worlds, yet accepted by neither, Dragon Knight is a half-blood child of the Skyrith and humankind.
@@ -284,7 +281,17 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => document.querySelector(".nav-links").classList.remove("open"));
+      link.addEventListener("click", event => {
+        document.querySelector(".nav-links").classList.remove("open");
+        const target = document.querySelector(link.getAttribute("href"));
+        const panel = target.closest(".factions-panel");
+        if (panel.hidden) {
+          event.preventDefault();
+          panel.hidden = false;
+          document.querySelector('.world-toggle[aria-controls="factions"]').setAttribute("aria-expanded", "true");
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
     });
     document.querySelectorAll(".world-toggle").forEach(toggle => {
       toggle.addEventListener("click", () => {
