@@ -1,5 +1,15 @@
+
 {
   "chapters": [
-    { "id": "chapter-1", "number": "Chapter I", "file": "chapters/chapter-01.md" }
+    {
+      "id": "chapter-1",
+      "number": "Chapter I",
+      "file": "chapters/chapter-01.md"
+    },
+    {
+      "id": "chapter-2",
+      "number": "Chapter II",
+      "file": "chapters/chapter-02.md"
+    }
   ]
 }
