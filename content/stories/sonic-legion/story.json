@@ -1,0 +1,5 @@
+{
+  "chapters": [
+    { "id": "chapter-1", "number": "Chapter I", "file": "chapters/chapter-01.md" }
+  ]
+}

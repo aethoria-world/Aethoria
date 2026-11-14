@@ -13,8 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Pro:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/story-reader.css">
   <script>document.documentElement.classList.add("js");</script>
   <script src="assets/main.js" defer></script>
+  <script src="assets/story-reader.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -40,46 +42,18 @@
     </section>
 
     <section class="story">
-      <div class="reading">
+      <!-- Chapters are loaded by assets/story-reader.js from content/stories/sonic-legion/ -->
+      <div class="reading" data-story="sonic-legion">
 
-        <!-- Chapter index: filled in automatically by assets/main.js once 2+ chapters are published -->
+        <!-- Chapter index: filled in automatically by assets/story-reader.js once 2+ chapters are published -->
         <nav class="chapter-index" aria-label="Chapters" hidden>
           <div class="eyebrow">Chapters</div>
           <ol></ol>
         </nav>
 
-        <!--
-          HOW TO ADD A CHAPTER
-          Copy the block below, paste it after the last chapter, and fill it in.
-          - id must be unique (chapter-2, chapter-3, ...).
-          - The chapter-title line is optional; delete it if the chapter has no title.
-          - Add the word `hidden` to <article> to keep a chapter unpublished.
-            (Hidden chapters are not shown to readers, but anyone viewing the page
-            source can still read them, so keep private drafts out of this file.)
-
-          <article class="chapter reveal" id="chapter-2">
-            <header class="chapter-header">
-              <p class="chapter-number">Chapter II</p>
-              <h2 class="chapter-title">Chapter title</h2>
-              <div class="gold-line"></div>
-            </header>
-            <p>First paragraph…</p>
-            <p>Next paragraph…</p>
-          </article>
-        -->
-
-        <article class="chapter reveal" id="chapter-1">
-          <header class="chapter-header">
-            <p class="chapter-number">Chapter I</p>
-            <div class="gold-line"></div>
-          </header>
-          <p>The Sonic Legion is the elite military force of the Skyrith,
-            a proud and ancient race of winged beings who dwell among the highest peaks of Aethoria.</p>
-          <p>Renowned for their extraordinary speed, aerial mastery, and unwavering discipline,
-            the Legion commands the skies with unmatched precision and devastating force.
-            Its warriors are among the finest of the Skyrith, bound by honor, loyalty, and an unshakable sense of superiority.</p>
-          <p>To behold the Sonic Legion descending from the heavens is to witness the fury of the skies unleashed.</p>
-        </article>
+        <noscript>
+          <p class="story-message">JavaScript is required to read this story. Please enable JavaScript in your browser.</p>
+        </noscript>
 
       </div>
     </section>

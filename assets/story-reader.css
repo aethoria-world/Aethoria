@@ -1,0 +1,27 @@
+/* AETHORIA — story reader additions. Uses the tokens from style.css.
+   Existing chapter and chapter-index styles stay in style.css. */
+
+/* Previous / next chapter links — only rendered when 2+ chapters are published */
+.chapter-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 24px;
+  margin-top: 44px; padding-top: 22px; border-top: 1px solid rgba(199,166,106,.14);
+}
+.chapter-nav a {
+  color: var(--gold-light); font: 500 10px/1.6 var(--display); letter-spacing: .16em; text-transform: uppercase;
+  transition: color .2s;
+}
+.chapter-nav a:hover { color: #f0dfb8; }
+.chapter-nav-prev::before { content: "←"; display: inline-block; margin-right: 8px; transition: transform .25s; }
+.chapter-nav-next { margin-left: auto; }
+.chapter-nav-next::after { content: "→"; display: inline-block; margin-left: 8px; transition: transform .25s; }
+.chapter-nav-prev:hover::before { transform: translateX(-4px); }
+.chapter-nav-next:hover::after { transform: translateX(4px); }
+
+/* Load-failure and no-JavaScript message */
+.story-message {
+  margin: 24px auto; text-align: center; color: #c6bdad;
+  font-size: clamp(18px, 2.6vw, 22px); font-style: italic;
+}
+.story-message::before {
+  content: "✧"; display: block; margin-bottom: 18px; color: var(--gold); font-style: normal;
+}

@@ -13,8 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Pro:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/story-reader.css">
   <script>document.documentElement.classList.add("js");</script>
   <script src="assets/main.js" defer></script>
+  <script src="assets/story-reader.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -40,46 +42,18 @@
     </section>
 
     <section class="story">
-      <div class="reading">
+      <!-- Chapters are loaded by assets/story-reader.js from content/stories/dragon-knight/ -->
+      <div class="reading" data-story="dragon-knight">
 
-        <!-- Chapter index: filled in automatically by assets/main.js once 2+ chapters are published -->
+        <!-- Chapter index: filled in automatically by assets/story-reader.js once 2+ chapters are published -->
         <nav class="chapter-index" aria-label="Chapters" hidden>
           <div class="eyebrow">Chapters</div>
           <ol></ol>
         </nav>
 
-        <!--
-          HOW TO ADD A CHAPTER
-          Copy the block below, paste it after the last chapter, and fill it in.
-          - id must be unique (chapter-2, chapter-3, ...).
-          - The chapter-title line is optional; delete it if the chapter has no title.
-          - Add the word `hidden` to <article> to keep a chapter unpublished.
-            (Hidden chapters are not shown to readers, but anyone viewing the page
-            source can still read them, so keep private drafts out of this file.)
-
-          <article class="chapter reveal" id="chapter-2">
-            <header class="chapter-header">
-              <p class="chapter-number">Chapter II</p>
-              <h2 class="chapter-title">Chapter title</h2>
-              <div class="gold-line"></div>
-            </header>
-            <p>First paragraph…</p>
-            <p>Next paragraph…</p>
-          </article>
-        -->
-
-        <article class="chapter reveal" id="chapter-1">
-          <header class="chapter-header">
-            <p class="chapter-number">Chapter I</p>
-            <div class="gold-line"></div>
-          </header>
-          <p>Born of two worlds, yet accepted by neither, Dragon Knight is a half-blood child of the Skyrith and humankind.</p>
-          <p>For his mixed heritage, his wings were severed in childhood, stripping him of the birthright of his mother's people.
-            His mother was condemned to death, while the identity of his human father remains shrouded in mystery.</p>
-          <p>Left to perish, he was saved by a small band of goblins, who became his unlikely companions.</p>
-          <p>Yet fate had other plans for the outcast. Through courage, wit, and an extraordinary gift, he eventually forged a bond with a dragon - a creature few could ever hope to command.</p>
-          <p>Now, astride his mighty companion, he wanders the vast lands of Aethoria, a lone traveler beneath the endless skies, belonging to no kingdom and bound by no borders.</p>
-        </article>
+        <noscript>
+          <p class="story-message">JavaScript is required to read this story. Please enable JavaScript in your browser.</p>
+        </noscript>
 
       </div>
     </section>

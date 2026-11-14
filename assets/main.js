@@ -20,43 +20,23 @@ if (menuToggle && navLinks) {
   });
 }
 
-// Gentle fade-in for elements marked .reveal
-const revealItems = document.querySelectorAll(".reveal");
+// Gentle fade-in for elements marked .reveal.
+// window.aethoriaReveal(el) lets story-reader.js apply it to chapters it adds later.
+let revealObserver = null;
 if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(entries => {
+  revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+        revealObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
-  revealItems.forEach(item => observer.observe(item));
-} else {
-  revealItems.forEach(item => item.classList.add("visible"));
 }
+window.aethoriaReveal = item => {
+  if (revealObserver) revealObserver.observe(item);
+  else item.classList.add("visible");
+};
+document.querySelectorAll(".reveal").forEach(window.aethoriaReveal);
 
-// Chapter index for story pages.
-// Lists every published chapter (<article class="chapter"> without the `hidden`
-// attribute). Only shown when at least two chapters are published.
-const chapterIndex = document.querySelector(".chapter-index");
-if (chapterIndex) {
-  const chapters = document.querySelectorAll(".chapter:not([hidden])");
-  if (chapters.length >= 2) {
-    const list = chapterIndex.querySelector("ol");
-    chapters.forEach(chapter => {
-      const number = chapter.querySelector(".chapter-number");
-      const title = chapter.querySelector(".chapter-title");
-      const item = document.createElement("li");
-      const link = document.createElement("a");
-      link.href = "#" + chapter.id;
-      const num = document.createElement("span");
-      num.className = "num";
-      num.textContent = number ? number.textContent : "";
-      link.append(num, title ? title.textContent : "");
-      item.append(link);
-      list.append(item);
-    });
-    chapterIndex.hidden = false;
-  }
-}
+// The chapter index and chapter content on story pages are handled by story-reader.js.
